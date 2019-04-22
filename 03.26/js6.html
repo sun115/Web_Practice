@@ -1,0 +1,28 @@
+
+<!-- body 깨끗 + 화면 전환 연습~ -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span id="mainArea"></span>
+  <span id="loginArea"></span>
+
+  <script>
+    var innerText1 = '<input type="button" value="LOGIN" id="button">';
+    document.getElementById("mainArea").innerHTML = innerText1;
+
+    document.getElementById("button").addEventListener('click', function() {
+      var innerText2 = 'ID : <input type="text"><br>PW : <input type="text"><br><input type="button"value="확인">'
+      document.getElementById("loginArea").innerHTML = innerText2;
+      document.getElementById("mainArea").innerHTML = ""
+    });
+  </script>
+</body>
+
+</html>

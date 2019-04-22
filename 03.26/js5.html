@@ -1,0 +1,38 @@
+<!-- // 구구단 만들기 ~ -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id='text'>
+  <input type="button" id='button'> <br>
+
+  <span id='inputArea'>
+
+  </span>
+
+  <script>
+    document.getElementById('text').placeholder = "몇 단을 출력할까요?"
+    document.getElementById('button').value = "GO"
+
+    document.getElementById('button').addEventListener('click', function() {
+      var inputNum = document.getElementById('text').value
+      var num;
+      var numtext = "";
+      for (var i = 1; i <= 9; i++) {
+        num = inputNum * i
+        console.log(num)
+        numtext += inputNum + " * " + i + " = " + num + "<br>"
+      }
+      document.getElementById('inputArea').innerHTML = numtext;
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Array 연습</title>
+</head>
+
+<body>
+  <script>
+// Array 가 몰가요 ~
+    // var reply = [];
+    //
+    // reply0 = "I am reply 0";
+    // reply1 = "I am reply 1";
+    // reply2 = "I am reply 2";
+    //
+    // reply[0] = "I am reply 0";
+    // reply[1] = "I am reply 1";
+    // reply[2] = "I am reply 2";
+    //
+    // console.log(reply0);
+    // console.log(reply1);
+    // console.log(reply2);
+    //
+    // for(var i=0; i<3; i++){
+    //   console.log(reply[i])
+    // }
+    // console.log(reply[0]);
+    // console.log(reply[1]);
+    // console.log(reply[2]);
+
+
+    var arr1 = [];
+    var arr2 = [];
+    var arr3 = [];
+    var arr4 = [];
+    var arr5 = [];
+    var arr6 = [];
+    var arr7 = [];
+    var arr8 = [];
+    var arr9 = [];
+    var arr10 = [];
+
+    for(var i=0; i<10; i++){
+      arr1[i] = i+1
+    }
+    console.log("arr1: "+arr1)
+
+    for(var i=0; i<=10; i++){
+        arr2[i] = 2 * i
+    }
+    console.log("arr2: "+arr2)
+
+    for (var i = 1; i < 8; i++) {
+      arr3[i-1] = "abc" + i
+    }
+    console.log("arr3: "+arr3)
+
+    for (var i = 0; i < 9; i++) {
+      arr4[i] = 3*i +1
+    }
+    console.log("arr4: "+arr4)
+
+    for (var i = 1; i <= 12; i=i+2) {
+      arr5[i-1] = 0
+      arr5[i] = 1
+    }
+    console.log("arr5: "+arr5)
+
+    for (var i = 0; i < 12; i++) {
+      arr6[i] = i%4
+    }
+    console.log("arr6: "+arr6)
+
+    // var a = ""
+    // for (var i = 1; i <= 5; i++) {
+    //   a += "text"
+    //   arr7 [i-1] = a
+    // }
+    for (var i = 0; i < 5; i++) {
+      arr7[i]  = ""
+      for (var j = 0; j <i+1; j++) {
+        arr7[i] += "text"
+      }
+    }
+
+    console.log("arr7: "+arr7)
+
+    var n = 1;
+    for (var i = 1; i <= 8 ; i++) {
+      arr8[i-1] = n;
+      n = n*10
+    }
+    console.log("arr8: "+arr8);
+
+
+
+    console.log(typeof(arr4));
+
+
+
+  </script>
+</body>
+
+</html>

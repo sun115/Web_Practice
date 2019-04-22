@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<!-- script로만 화면 구성해보기!! -->
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span id='numberArea'></span>
+
+  <span id='numberArea2'></span>
+  <script>
+
+
+// for문을 이용해서 1부터 10까지 숫자 출력하기
+    // for (var i = 1; i < 6; i = i + 0.5) {
+    //   console.log(i*2-1)
+    // }
+    //
+    // for (var i = 0; i >(-10) ; i = i - 1) {
+    //   console.log(-(i)+1)
+    // }
+    //
+    // for (var i = 1; i < 11; i++) {
+    //   console.log(i%11)
+    // }
+    //
+    // for (var i = 1; i < 11; i= i+1.01) {
+    //   console.log(Math.floor(i))
+    // }
+    //
+    // var array = new Array();
+    // array.sort(function(a, b) {
+    //   for (var i = 10; i >= 0; i = i - 1.01) {
+    //     array = [Math.ceil(i)]
+    //     // console.log(array)
+    //   };
+    //   return a - b;
+    // });
+    // // array.sort();
+    // console.log(array)
+    // // console.log(array.reverse());
+    //
+    //   var a="";
+    // for (var i=1; i<11; i++){
+    //   a = a + "a";
+    //   console.log(a)
+    //  console.log(a.length)
+    // }
+
+// 숫자를 문자열로 출력
+    // var numtext = "";
+    // for (var i = 1; i <= 10; i++) {
+    //   numtext += i + " ";
+    // }
+    // console.log(numtext)
+    // document.getElementById('numberArea').innerHTML = numtext;
+    //
+    // var numtext = "";
+    // for (var j = 0; j < 100; j = j + 10) {
+    //   // numtext += j + " ";
+    //   for (var i = 1; i <= 10; i++) {
+    //     numtext += j + i + " ";
+    //   }
+    //   numtext = numtext + "<br>"
+    // }
+    // document.getElementById('numberArea').innerHTML = numtext + '<br>';
+
+
+// span id를 이용한 화면 전환
+     var numtext2 = "";
+     for (var i = 1; i <= 100; i++) {
+      numtext2 += i + " "
+      if (i % 10 == 0) {
+        numtext2 += '<br>'
+      }
+      document.getElementById('numberArea2').innerHTML = numtext2;
+    }
+
+    // body에 input하지 않고 script에 innerHTML로도 input이 가능 !!
+    var innerHTMLText = '<input type="text" id="text"><input type="button" id="button">';
+    document.getElementById('numberArea2').innerHTML = innerHTMLText;
+
+    document.getElementById('text').value = "퀴즈의 답은 몰가요"
+    document.getElementById('button').value = "click !"
+
+    document.getElementById('button').addEventListener('click', function() {
+      var numtext2 = "";
+      for (var i = 1; i <= 100; i++) {
+        numtext2 += i + " "
+        if (i % 10 == 0) {
+          numtext2 += '<br>'
+        }
+        document.getElementById('numberArea2').innerHTML = numtext2;
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>2중배열</title>
+</head>
+
+<body>
+  <script>
+    for (var i = 1; i <= 50; i++) {
+      n = "arr" + i + "=[]";
+      eval(n);
+    }
+
+    var arr = [];
+    // 1차원배열의 인덱스에 배열이라고 선언해야만 2차원배열도 배열이라 인식한다.
+    arr[0] = [];
+    arr[0][0] = 10;
+    arr[1] = [];
+    arr[1][0] = 20;
+
+    //2중 for문 이용해서 2차원배열 만들기
+    for (var i = 0; i < 5; i++) {
+      arr1[i] =  [];
+      for (var j = 0; j < 5; j++) {
+        arr1[i][j] = (j+1) + (5*i);
+      }
+    }
+
+    // for문 하나만 써서 이중배열 만들어보기
+    for (var i = 0; i < 25; i++) {
+      if(i%5==0){
+        arr2[Math.floor(i/5)] = []
+      }
+      arr2[Math.floor(i/5)][i%5] = i+1;
+    }
+
+    for (var i = 0; i < 5; i++) {
+      arr3[i] = [];
+      for (var j = 0; j < 5; j++) {
+        arr3[i][j] = (j*3+1) + (15*i);
+      }
+    }
+    arr3[2][5] = "add";
+
+    for (var i = 0; i < 5; i++) {
+      arr4[i] = []
+      for (var j = 0; j < 5; j++) {
+        arr4[i][j] = i*j
+      }
+    }
+
+    for (var i = 0; i < 5; i++) {
+      arr5[i] = []
+      for (var j = 0; j < 5; j++) {
+        arr5[i][j] = (i+"")+(j+"")
+      }
+    }
+
+    var num = 0;
+    for (var i = 0; i < 5; i++) {
+      arr6[i] = []
+      for (var j = 0; j < 5; j++) {
+        arr6[i][j] = num;
+        num += i*2 + j*3
+      }
+    }
+
+    for (var i = 1; i < 10; i+=3) {
+      arr7[(i+2)/3-1] = [];
+      for (var j = 0; j < 5; j++) {
+        arr7[(i+2)/3-1][j] = i*j;
+      }
+    }
+
+    for (var i = 1; i <= 7; i++) {
+      var n = "console.log(arr" + i + ")";
+      eval(n);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <span id = "helloArea">이벤트 함수 연습해보기</span>
+    <br>
+    <input type="text"  id = "inputText" value="">
+    <input type="text"  id = "inputText2" value="">
+    <input type="button" name="" value="button" id = 'button'>
+    <input type="button" name="" value="DO NOT CLICK" id = "button2">
+
+  </body>
+
+  <script type="text/javascript">
+
+    // console창에 찍어보는 연습을 해보자
+    // console.log("hello javascript2");
+    // document.getElementById('helloArea').innerHTML = "I'm S T A R V I N G . . ."
+    // var a = 10;
+    // console.log(a*2, a);
+    // console.log("10+10=", 10+10);
+    // console.log("100-60=", 100-60);
+    // console.log("7*7=", 7*7);
+    // console.log("20/3=", 20/3);
+    // document.getElementById('inputText')
+
+    // var b = "I am full now."
+    // document.getElementById('inputText').value = b;
+    //
+    // if(0){
+    //   console.log(true);
+    // }else{
+    //   console.log(false)
+    // }
+
+    // for (var e = 0; e <=20; e++) {
+    //
+    //   if (10<e && e<=20){
+    //     console.log("over ten", e)
+    //   } else if (e<10){
+    //     console.log("lower ten", e)
+    //   } else {
+    //     console.log("ten", e)
+    //   }
+    // }
+
+// 이벤트 함수 연습 1
+    // var z = document.getElementById('inputText').value
+    //
+    // document.getElementById('button').addEventListener('click', function(){
+    //   var x = document.getElementById('inputText').value
+    //   var z =  document.getElementById('inputText2').value
+    //   if (x != null) {
+    //     alert(x);
+    //     alert(z);
+    //   } else if (z != null){
+    //     alert(x);
+    //     alert(z);
+    //   }  else {
+    //     alert(x);
+    //     alert(z);
+    //   }
+    // });
+    //
+    // document.getElementById('button2').addEventListener('click', function(){
+    //   var z = document.getElementById('inputText2').value
+    //   alert(z);
+    // });
+
+// 이벤트 함수 연습 2
+    document.getElementById('button').addEventListener('click', function(){
+      var a = document.getElementById('inputText').value
+      var b = document.getElementById('inputText2').value
+
+      console.log(a,b,Number(a)+Number(b));
+
+      if (Number(a) + Number(b) >= 10){
+        alert("10 이상");
+      } else {
+        alert("10 미만");
+      }
+    });
+
+    document.getElementById('button2').addEventListener('click', function(){
+      alert("-ㅁ-")
+    });
+
+
+  </script>
+
+</html>

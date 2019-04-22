@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>369게임</title>
+</head>
+
+<body>
+  <script>
+    // 배열 한번에 선언
+    for (var i = 1; i <= 50; i++) {
+      n = "arr" + i + "=[]";
+      eval(n);
+    }
+
+    for (var i = 0; i < 5; i++) {
+      arr1[i] = i * i;
+    }
+
+
+    for (var i = 0; i < 5; i++) {
+      if (i % 2 == 0) {
+        arr2[i] = "J";
+      } else {
+        arr2[i] = "H";
+      }
+    }
+
+
+    for (var i = 2; i < 10; i += 2) {
+      arr3[0] = 0;
+      arr3[i / 2] = arr3[i / 2 - 1] + 10;
+    }
+
+
+    for (var i = 4; i < 16; i += 4) {
+      for (var j = 0; j < 4; j++) {
+        arr4[i - 4 + j] = i - j;
+      }
+    }
+
+
+    // for (var i = 1; i <= 200; i++) {
+    //   arr5[i] = i+1
+    //   if(i<10){
+    //     arr5[i-1] = i;
+    //     if(i%3==0){arr5[i-1] += "짝";}
+    //   } else if (i>=10 & i<100) {
+    //     arr5[i-1] = i;
+    //     if (i%10==0) {arr5[i+2]+="짝";arr5[i+5]+="짝";arr5[i+8]+="짝";}
+    //   } else if (i>=100 & i<1000) {
+    //     arr[i-1] = i;
+    //     if (i)
+    //
+    //   }
+    //
+    // }
+
+    for (var i = 1; i <= 200; i++) {
+      var check = i + "";
+      console.log(check);
+      for (var j = 0; j < check.length; j++) {
+        if(check[j]=="3" || check[j]=="6" || check[j]=="9"){
+          console.log("짝");
+        }
+        // console.log(str[j]);
+      }
+      // console.log("");
+    }
+
+    // for (var i = 1; i <= 200; i++) {
+    //   arr5[i] = i + ""
+    //   for (var j = 0; j < arr5[i].length; j++) {
+    //     if(arr5[i][j]=="3" || arr5[i][j]=="6" || arr5[i][j]=="9"){
+    //       arr5[i] = i + "짝"
+    //     } else {
+    //       arr5[i] = i + ""
+    //     }
+        // if(j==1){
+        //   arr5[i+(3*n)] += "짝"
+        // }else if (j==2 && i%10==0;) {
+        //   arr5[i+(3*n)] += "짝"
+        // }else if (j==3) {
+        //
+        // }
+    //   }
+    // }
+
+
+
+    // 콘솔 한번에 찍기
+    for (var i = 1; i <= 5; i++) {
+      var n = "console.log(arr" + i + ")";
+      eval(n);
+    }
+  </script>
+</body>
+
+</html>
