@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span>편명 / 항공기명 / 좌석수 / 출발지 / 목적지 / 출발시간 / 도착시간</span><br><br>
+  <span id="resultArea"></span><br><br>
+  <input type="button" id="flight" value="항공편입력">
+  <input type="button" id="aircraft" value="항공기입력">
+  <input type="button" id="clear" value="CLEAR">
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $.ajax({
+    url: `/getAirplainList`,
+    data: {},
+    success: function(response) {
+
+      for (var i = 0; i < response.length; i++) {
+        var targetIndex = Number(response[i].no);
+        $("#resultArea").append(`${response[i].flightName} / ${response[i].aircraftName} / ${response[i].seats} /
+            ${response[i].departure} / ${response[i].arrival} / ${response[i].departTime} / ${response[i].arrivalTime}<br>`);
+      }
+      console.log(response);
+    }
+  });
+
+  $("#flight").click(function() {
+    location.href = "/flightForm"
+  });
+
+  $("#aircraft").click(function() {
+    location.href = "/aircraftForm"
+  });
+
+  $("#clear").click(function() {
+    $.ajax({
+      url: `/clearAll`,
+      data: {},
+      success: function(response) {
+        $("#resultArea").html("");
+      }
+    });
+  });
+
+
+
+
+
+  function deleteOne(targetIndex) {
+    $.ajax({
+      url: `/deleteOne?targetIndex=${targetIndex}`,
+      data: {},
+      success: function(response) {
+        console.log(response);
+        alert("삭제 성공")
+        location.href = `/newList`
+      }
+    })
+  };
+
+
+  function editOne(targetIndex) {
+    location.href = `/editPage?no=${targetIndex}`
+  };
+
+
+</script>
+
+</html>

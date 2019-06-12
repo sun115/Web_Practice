@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>중간고사</title>
+</head>
+
+<body>
+  이름: <input type="text" id="name"><br>
+  html: <input type="text" id="html"><br>
+  javascript: <input type="text" id="javascript"><br>
+  css: <input type="text" id="css"><br>
+  nodejs: <input type="text" id="nodejs"><br>
+  mysql: <input type="text" id="mysql"><br>
+  <input type="button" id="btn1" value="성적입력">
+  <input type="button" id="btn2" value="초기화"><br><br>
+  <span id=scoreArea></span><br><br>
+  <span id=resultArea></span><br>
+  <span id=rankArea></span>
+  <script>
+    var ipHtmls = 0;
+    var ipJavascripts = 0;
+    var ipCsss = 0;
+    var ipNodejss = 0;
+    var ipMysqls = 0;
+    var avgs = 0;
+    var rank = [];
+    var ranks = {};
+    var cnt=0;
+
+    document.getElementById('btn1').addEventListener('click', function() {
+      var name = document.getElementById('name').value;
+      var ipHtml = Number(document.getElementById('html').value);
+      var ipJavascript = Number(document.getElementById('javascript').value);
+      var ipCss = Number(document.getElementById('css').value);
+      var ipNodejs = Number(document.getElementById('nodejs').value);
+      var ipMysql = Number(document.getElementById('mysql').value);
+      var avg = (ipHtml+ipJavascript+ipCss+ipNodejs+ipMysql)/5;
+// 텍스트박스 초기화
+    document.getElementById('name').value = ""
+    document.getElementById('html').value = ""
+    document.getElementById('javascript').value = ""
+    document.getElementById('css').value = ""
+    document.getElementById('nodejs').value = ""
+    document.getElementById('mysql').value = ""
+// 총합 누적 (평균 구하려고)
+      ipHtmls += ipHtml;
+      ipJavascripts += ipJavascript;
+      ipCsss += ipCss;
+      ipNodejss += ipNodejs;
+      ipMysqls += ipMysql;
+      avgs += avg;
+// 랭킹 누적 (최고점자 구하려고)
+      ranks = {
+        name : name,
+        avg : avg
+      }
+      rank[cnt] = ranks
+      // console.log(rank);
+
+// 성적확인
+      document.getElementById('scoreArea').innerHTML
+      += `이름 : ${name} / html : ${ipHtml} / javascript : ${ipJavascript} / css : ${ipCss} / nodejs :
+      ${ipNodejs} / mysql : ${ipMysql} / ${name}평균 : ${avg}<br>`
+// 평균확인
+      cnt += 1;
+      document.getElementById('resultArea').innerHTML
+      = `평균 : html평균 : ${ipHtmls/cnt} / javascript평균 : ${ipJavascripts/cnt} / nodejs평균 :
+      ${ipCsss/cnt} / mysql평균 : ${ipMysqls/cnt} / 전체평균 : ${avgs/cnt}<br>`
+
+// 랭킹 배열 평균순으로 정렬
+      var sortingField = 'avg';
+      rank.sort(function(a,b){
+        return b[sortingField]-a[sortingField];
+      })
+      console.log(rank);
+// 랭킹확인
+      document.getElementById('rankArea').innerHTML
+      = `최고점자 이름 : ${rank[0].name} / 평균 : ${rank[0].avg}`
+    })
+// 초기화
+    document.getElementById('btn2').addEventListener('click', function() {
+      ipHtmls = 0;
+      ipJavascripts = 0;
+      ipCsss = 0;
+      ipNodejss = 0;
+      ipMysqls = 0;
+      avgs = 0;
+      rank = [];
+      ranks = {};
+      cnt=0;
+      ipHtml = 0;
+      ipJavascript = 0;
+      ipCss = 0;
+      ipNodejs = 0;
+      ipMysql = 0;
+      avg = 0;
+      document.getElementById('scoreArea').innerHTML =""
+      document.getElementById('resultArea').innerHTML =""
+      document.getElementById('rankArea').innerHTML =""
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  편명 : <input type="text" id="txt0" value=""><br>
+  항공코드 : <input type="text" id="txt1" value=""><br>
+  출발지 : <input type="text" id="txt2" value=""><br>
+  목적지 : <input type="text" id="txt3" value=""><br>
+  출발시각 : <input type="text" id="txt4" value=""><br>
+  도착시각 : <input type="text" id="txt5" value=""><br>
+  <input type="button" id="write" value="WRITE">
+  <input type="button" id="cancel" value="CANCEL" onclick= 'location.href = "/mainAirplain"'>
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $("#write").click(function() {
+    $.ajax({
+      url: `/writeFlights`,
+      type: 'POST',
+      data: {
+        flightName: $("#txt0").val(),
+        aircraftCode: $("#txt1").val(),
+        departure: $("#txt2").val(),
+        arrival: $("#txt3").val(),
+        departTime: $("#txt4").val(),
+        arrivalTime: $("#txt5").val()
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+    alert("항공편 작성 성공♬")
+    location.href = "/mainAirplain"
+  });
+</script>
+
+</html>

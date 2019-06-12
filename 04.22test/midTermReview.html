@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    이름 : <input type="text" id="name"><br>
+    html : <input type="text" id="html"><br>
+    javascript : <input type="text" id="javascript"><br>
+    css : <input type="text" id="css"><br>
+    nodejs : <input type="text" id="nodejs"><br>
+    mysql : <input type="text" id="mysql"><br>
+    <input type="button" value="성적입력" id="inputScoreBtn">
+    <input type="button" value="초기화" id="resetBtn">
+    <br><br>
+    <span id="scoreInfoArea"></span>
+    <br>
+    평균 : <span id="avgArea"></span><br>
+    최고점자 <span id="bestScore"></span>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+      <script>
+      var htmlT=0, javascriptT=0, cssT=0, nodejsT=0, mysqlT=0, studentCnt=0,bestScore;
+
+      $("#inputScoreBtn").click(function(){
+        var name = $("#name").val();
+        var html = Number($("#name").val());
+        var javascript = Number($("#javascript").val());
+        var css = Number($("#css").val());
+        var nodejs = Number($("#nodejs").val());
+        var mysql = Number($("#mysql").val());
+        var avg = (html+javascript+css+nodejs+mysql)/5;
+        htmlT += html;
+        javascriptT += javascript;
+        cssT += css;
+        nodejsT += nodejs;
+        mysqlT += mysql;
+        studentCnt++;
+
+        var appendText = `이름 : ${name} / html : ${html} / javascript : ${javascript}
+        / css : ${css} / nodejs : ${nodejs} / mysql : ${mysql} / ${name }평균 : ${avg} <br>`;
+        $("#scoreInfoArea").append(appendText);
+        var avgText = `html평균 : ${htmlT/studentCnt}
+        / javascript평균 : ${javascriptT/studentCnt} / css평균 : ${cssT/studentCnt}
+        / nodejs평균 : ${nodejsT/studentCnt} / mysql평균 : ${mysqlT/studentCnt}
+  	    / 전체평균 : ${(htmlT + javascriptT + cssT + nodejsT + mysqlT)/5/studentCnt}`;
+        $("#avgArea").html(avgText);
+
+        if (studentCnt==1) {
+          bestScore=avg;
+          $("#bestScore").html(`이름 : ${name} / 평균 : ${avg}`);
+        } else if (avg>bestScore){
+          bestScore=avg;
+          $("#bestScore").html(`이름 : ${name} / 평균 : ${avg}`);
+        }
+
+      })
+
+      $("#resetBtn").click(function(){
+        htmlT=0;
+        javascriptT = 0;
+  	    cssT = 0;
+  	    nodejsT = 0;
+  	    mysqlT = 0;
+  	    studentCnt = 0;
+
+        $("#scoreArea").html("");
+        $("#avgArea").html("");
+        $("#scoreInfoArea").html("");
+        $("#bestScore").html("");
+      })
+
+
+    </script>
+  </body>
+</html>

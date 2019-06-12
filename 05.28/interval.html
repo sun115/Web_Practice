@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="input" value=""><br>
+  <span id="span1"><input type="button" value="배수증가" onclick="myfunc1();"></span><br>
+  <span id="span2"><input type="button" value="타이머" onclick="myfunc2();"></span><br>
+  <span id="span3"><input type="button" value="타이머종료" onclick="myfunc3();"></span><br>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  var cnt = 0;
+
+  function myfunc1() {
+    var input = Number($("#input").val());
+    setInterval(function() {
+      cnt++
+      console.log(input * cnt);
+    }, 3000)
+  }
+
+  var timerId = null;
+
+  function myfunc2() {
+    setTimeout(function() {
+      timerId = setInterval(function() {
+        cnt++;
+        $("#span2").append(" " + cnt)
+      }, 1000)
+    }, 3000)
+  }
+
+  function myfunc3() {
+    if (timerId != null) {
+      setTimeout(function() {
+        clearInterval(timerId)
+      }, 3000)
+    }
+  }
+</script>
+
+</html>

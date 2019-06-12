@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="button" id="drawGraphBtn" value="ART">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+  <p> I LOVE CATS</p>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  var rows;
+  $("#drawGraphBtn").click(function() {
+    rows = []
+    var quotes = []
+    var currTime = []
+    $.ajax({
+        url: `/getQuotes`,
+        data: {},
+        success: function(response) {
+          for (var i = 0; i < response.length; i++) {
+            var eachTime = response[i].time
+            var date = eachTime.split('T')[0].split('-')
+            var time = eachTime.split('T')[1].split('.')[0].split(':')
+            time[0] = Number(time[0]) + 9
+            var currTime = new Date(date[0], Number(date[1]) - 1, date[2], time[0], time[1], time[2])
+            rows.push([currTime, response[i].quote]);
+          }
+          console.log(date, time);
+          google.charts.load('current', {
+            packages: ['corechart', 'line']
+          })
+          google.charts.setOnLoadCallback(drawCurveTypes);
+        }
+      });
+    });
+
+
+
+  function drawCurveTypes() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('datetime', 'CurrTime');
+    data.addColumn('number', 'Quotes');
+
+    data.addRows(rows);
+    var options = {
+      hAxis: {
+        title: 'CurrTime'
+      },
+      vAxis: {
+        title: 'Quotes'
+      },
+      series: {
+        1: {
+          curveType: 'function'
+        }
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
+</html>

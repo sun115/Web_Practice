@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <input type="button" value="다지워!" id="btn">
+  <span id="span2"></span><br><br>
+  <span id="span1"></span><br>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  $.ajax({
+    url: `/getQuotes`,
+    data: {},
+    success: function(response) {
+      $("#span2").html("");
+      for (var i = 0; i < response.length; i++) {
+        $("#span2").append(`<br>시간: ${response[i].time} --- 시세: ${response[i].quote}`);
+      }
+      console.log(response);
+      console.log(i);
+    }
+  });
+
+  setInterval(function() {
+    var quote = ""
+    $.ajax({
+      url: `/requestTest2`,
+      data: {},
+      success: function(response) {
+        quote = response
+
+        console.log(response);
+
+        $.ajax({
+          url: `/writeQuotes`,
+          type: 'POST',
+          data: {
+            quote: quote
+          },
+          success: function(response) {
+            console.log(response);
+          }
+        })
+      }
+    });
+  }, 10000)
+  // });
+
+  $("#btn").click(function() {
+    $.ajax({
+      url: `/clearAll`,
+      data: {},
+      success: function(res) {
+        location.href = '/ajax'
+      }
+    })
+  });
+</script>
+
+</html>

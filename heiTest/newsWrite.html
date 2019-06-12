@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  작성자 : <input type="text" id="txt0" value=""><br>
+   제목 : <input type="text" id="txt1" value=""><br>
+   내용 : <input type="text" id="txt2" value=""><br>
+  <input type="button" id="btn" value="WRITE">
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $("#btn").click(function() {
+    $.ajax({
+      url: `/writeNews`,
+      type: 'POST',
+      data: {
+        writer: $("#txt0").val(),
+        title: $("#txt1").val(),
+        text: $("#txt2").val()
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+    alert("글쓰기 성공♬")
+    location.href = "/newList"
+  });
+</script>
+
+</html>

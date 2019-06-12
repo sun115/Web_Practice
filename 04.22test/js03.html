@@ -1,0 +1,62 @@
+<!--app.js에서 웹 브라우저 상에서 "localhost/sumform"의 요청이 들어 왔을때 실행되는
+app.get에서 보내주는 html양식. 여기서 짜주는 형태로 응답을 보내준다 -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>곱하기</title>
+</head>
+
+<body>
+  <input type="text" id="num1">
+  <input type="text" id="num2">
+  <input type="text" id="num3">
+  <input type="button" value="MUL" id="sumBtn">
+
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+//버튼을 클릭했을 때 ajax가 시작됨
+  $("#sumBtn").click(function() {
+    var num1 = Number($("#num1").val());
+    var num2 = Number($("#num2").val());
+    var num3 = Number($("#num3").val());
+
+    // https://blog.naver.com/jwyoon25/221322951893 참고
+    // JavaScript의 Ajax기술을 jQuery 프레임워크에서 사용하는 방법
+    $.ajax({
+      // url : 들어온 요청("localhost/sumform")에 대하여 응답을 보내는 형테.
+      // 이 외에도 post로 주고받는 등의 다양한 형식이 있지만, 지금은 이 형식까지만 배웠다.
+      // url : `http://localhost/sum2?num1=${num1}&num2=${num2}&num3=${num3}`에서 sum2는 app.js에서
+      // localhost/sum2에 대한 응답형태를 정의해준 그대로 요청을 해주라는 의미.
+      url: `http://localhost/js03?num1=${num1}&num2=${num2}&num3=${num3}`,
+      // 위의 url주소를 요청했을때 app.js에서 원래 실행되는 app.get의 형태
+      // app.get('/sum2', function(req, res) {
+      //   var num1 = Number(req.query.num5);
+      //   var num2 = Number(req.query.num2);
+      //   var num3 = Number(req.query.num3);
+      //   console.log(num1 + num2 + num3);
+      //   res.send(`Sum is ${num1 + num2 + num3}`);
+      // });
+
+      //get방식만 주소에 데이터를 붙여서 데이터를 주고받는데, 다른 방식의 경우
+      //아래의 data : {}에 데이터를 집어넣어 주고받는다.
+      data: {};
+
+      //요청에 대한 응답(app.js의 res.send 등의 형태)이 성공했을경우 아래의 success:가 실행이 된다
+      //success : 요청에 대한 응답이 성공한 경우. fail도 있고 compleete도 있지만 아직 배우지 않았다.
+      //function에서 인자로 받는 response라는 인자의 이름은 우리가 알아보기 쉽기 위해 response라는 이름으로
+      //지어준 것이며, 어떤 이름으로 지어도 상관없다. 그러나 해당 function에서 인자로 받는 값은
+      //url : 에서 설정해준 sum2가 실행됬을 때 보내주는 응답인 res.send(`Sum is ${num1 + num2 + num3}`) 이다.
+      //따라서 아래의 function은 res.send(`Sum is ${num1 + num2 + num3}`)가 consol.log로 찍히는 것이 실행결과이다.
+      success: function(response) {
+        console.log(response);
+      }
+    })
+  });
+</script>
+
+</html>

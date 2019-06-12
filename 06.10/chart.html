@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="button" id="drawGraphBtn" value="ART">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+  <p> I LOVE CATS</p>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  var rows;
+  $("#drawGraphBtn").click(function() {
+    var bigCats = []
+    var smallCats = []
+    var dogs = []
+    rows = []
+    for (var i = 0; i <= 10; i++) {
+      bigCats[i] = Math.floor(Math.random() * 10) + 1
+      smallCats[i] = Math.floor(Math.random() * 10) + 1
+      dogs[i] = Math.floor(Math.random() * 10) + 1
+      rows.push([i, bigCats[i], smallCats[i], dogs[i]])
+    }
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    })
+    google.charts.setOnLoadCallback(drawCurveTypes);
+  });
+
+
+
+
+  function drawCurveTypes() {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'X');
+    data.addColumn('number', 'Big Cats');
+    data.addColumn('number', 'Small Cats');
+    data.addColumn('number', 'Dogs');
+
+    data.addRows(
+      rows
+    );
+    var options = {
+      hAxis: {
+        title: 'Time'
+      },
+      vAxis: {
+        title: 'Popularity',
+        viewWindow: {
+          min: 0,
+          max: 11
+        }
+      },
+      series: {
+        1: {
+          curveType: 'function'
+        }
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
+</html>

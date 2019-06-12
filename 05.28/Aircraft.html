@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  항공코드 : <input type="text" id="txt1" value=""><br>
+  항공기명 : <input type="text" id="txt2" value=""><br>
+  좌석 수 : <input type="text" id="txt3" value=""><br>
+  <input type="button" id="write" value="WRITE">
+  <input type="button" id="cancel" value="CANCEL" onclick= 'location.href = "/mainAirplain"'>
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $("#write").click(function() {
+    $.ajax({
+      url: `/writeAircrafts`,
+      type: 'POST',
+      data: {
+        aircraftCode: $("#txt1").val(),
+        aircraftName: $("#txt2").val(),
+        seats: $("#txt3").val()
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+    alert("항공기 작성 성공♬")
+    location.href = "/mainAirplain"
+  });
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  작성자 : <input type="text" id="txt0" value=""><br>
+  제목 : <input type="text" id="txt1" value=""><br>
+  내용 : <input type="text" id="txt2" value=""><br>
+  <input type="button" id="btn1" value="EDIT">
+  <input type="button" id="btn2" value="CANCEL">
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  var targetIndex = Number(location.href.split("=")[1]);
+  $.ajax({
+    url: `/getMyNews`,
+    data: {
+    },
+    success: function(response) {
+
+      for (var i = 0; i < response.length; i++) {
+        if(targetIndex == Number(response[i].no)) {
+          $("#txt0").val(response[i].writer)
+          $("#txt1").val(response[i].title)
+          $("#txt2").val(response[i].article)
+        }
+      }
+      console.log(response);
+    }
+  });
+
+
+  $("#btn1").click(function() {
+
+    $.ajax({
+      url: `/editOne`,
+      type: 'POST',
+      data: {
+        targetIndex: targetIndex,
+        writer: $("#txt0").val(),
+        title: $("#txt1").val(),
+        text: $("#txt2").val()
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+    alert("수정 성공♬")
+    location.href = "/newList"
+  });
+
+
+  $("#btn2").click(function() {
+    location.href = `/newList`
+  });
+</script>
+
+</html>

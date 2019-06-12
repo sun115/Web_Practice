@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <select name="" id="selectBox1">
+    <option value="0">냥</option>
+    <option value="1">댕</option>
+    <option value="2">꽥</option>
+    <option value="3">웡</option>
+    <!-- <option value="4">BMW</option> -->
+  </select>
+  <input type="button" id="goBtn" value="GO">
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $("#goBtn").click(function() {
+    if ($("#selectBox1").val() == 0) {
+      showMsg("냥")
+    } else if ($("#selectBox1").val() == 1) {
+      showMsg("멍")
+    } else if ($("#selectBox1").val() == 2) {
+      showMsg("꽥")
+    } else if ($("#selectBox1").val() == 3) {
+      console.log(showMsg("웡"))
+    }
+
+    function showMsg(animalName){
+      console.log(`${animalName}을(를) 선택했습니다.`);
+      return animalName;
+    }
+  })
+</script>
+
+</html>

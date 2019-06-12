@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span>
+    <input type="text" id="txt1" value="">
+    <input type="text" id="txt2" value="">
+    <input type="text" id="txt3" value="">
+  </span><br><br>
+  <span id="resultArea"></span><br><br>
+  <span id="resultArea2"></span><br><br>
+  <span>
+    <input type="button" id="returnBtn" value="return">
+    <input type="button" id="funcBtn" value="실행">
+  </span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+
+$("#returnBtn").click(function(){
+  var txt1 = $("#txt1").val();
+  var txt2 = $("#txt2").val();
+  var txt3 = $("#txt3").val();
+  findMax(txt1,txt2,txt3)
+});
+
+$("#funcBtn").click(function(){
+  var txt1 = $("#txt1").val();
+  var txt2 = $("#txt2").val();
+  var txt3 = $("#txt3").val();
+  findMax(txt1,txt2,txt3)
+});
+
+
+  function findMax(input1, input2, input3) {
+    input1 = Number(input1);
+    input2 = Number(input2);
+    input3 = Number(input3);
+    var inputArr = [];
+    inputArr = [input1, input2, input3];
+    maxVal = Math.max.apply(null,inputArr);
+    // for (var i = 0; i < inputArr.length-1; i++) {
+    //   if(inputArr[i]>inputArr[i+1]){
+    //     inputArr[i] = inputArr[i]
+    //   } else {
+    //     inputArr[i] = inputArr[i+1]
+    //   }
+    // }
+    $("#resultArea2").html(`실행값은? ${maxVal}`);
+    console.log(`${inputArr}`);
+    console.log(`${maxVal}`);
+    return $("#resultArea").html(`return값은? ${maxVal}`);
+  }
+</script>
+
+</html>

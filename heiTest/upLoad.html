@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="txt1" value="" placeholder="제목">
+  <input type="text" id="txt2" value="" placeholder="내용"><br>
+  <input type="button" id="btn" value="UPLOAD">
+  <input type="button" id="btn2" value="DELETE ALL">
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  $("#btn").click(function() {
+    var txt1 = $("#txt1").val();
+    var txt2 = $("#txt2").val();
+
+    $.ajax({
+      url: `/update?txt1=${txt1}&txt2=${txt2}`,
+      data: {},
+      success: function(response) {
+        // $("#loadArea").html("");
+        // for (var i = 0; i < response.length; i++) {
+        //   $("#loadArea").append(`${response[i].title} : ${response[i].article}<br>`);
+        // }
+        console.log(response);
+      }
+    })
+    $("#txt1").val("");
+    $("#txt2").val("");
+  });
+
+  $("#btn2").click(function() {
+    $.ajax({
+      url: `/deleteAll`,
+      data: {},
+      success: function(response) {
+        // $("#loadArea").html("");
+        // for (var i = 0; i < response.length; i++) {
+        //   $("#loadArea").append(`${response[i].title} : ${response[i].article}<br>`);
+        // }
+        console.log(response);
+      }
+    })
+  });
+</script>
+
+</html>

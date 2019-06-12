@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <!-- NO.1 <input type="text" id="num1"><br>
+  NO.2 <input type="text" id="num2"><br>
+  <input type="button" id="calcBtn" value="계산"><br> -->
+  <span id="defaultArea"></span><br>
+  <span id="resultArea"></span>
+  <br><br><br><br>
+  <span id="cntArea"></span>
+  <script>
+    var cnt = 0;
+    var total = 0;
+
+    document.getElementById('defaultArea').innerHTML
+    = '<input type="button" id="calcBtn" value="GO"><br>';
+
+    document.getElementById('calcBtn').addEventListener('click', function(){
+
+    document.getElementById('defaultArea').innerHTML
+    = 'NO.1 <input type="text" id="num1"><br>\
+    NO.2 <input type="text" id="num2"><br>\
+    <input type="button" id="calcBtn" value="계산"><br>';
+
+
+    document.getElementById('cntArea').innerHTML = '횟수 <input type="text" id="num3">'
+
+    document.getElementById('calcBtn').addEventListener('click', function() {
+
+      var num1 = Number(document.getElementById('num1').value);
+      var num2 = Number(document.getElementById('num2').value);
+      console.log(num1 * num2);
+      tmp = num1*num2;
+      total += tmp;
+      sumstr = "총합 : "
+      document.getElementById('resultArea').innerHTML += `${num1}x${num2} = ${num1*num2}<br>${total}`;
+
+      cnt++;
+      document.getElementById('num3').value = cnt;
+    })
+  })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="button" id="writeBtn" value="WRITE">
+  <input type="button" id="deleteBtn" value="DELETE ALL">
+  <br><br><span id="loadArea"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+  $.ajax({
+    url: `/getNewsList`,
+    data: {
+    },
+    success: function(response) {
+
+      $("#loadArea").html("");
+      for (var i = 0; i < response.length; i++) {
+        var targetIndex = Number(response[i].no);
+        $("#loadArea").append(`${response[i].no} )<br>작성자: ${response[i].writer}<br>제목: ${response[i].title}<br>내용: ${response[i].article}
+        <br><input type="button" value="수정" onclick = editOne(${targetIndex})>
+        <input type="button" value="삭제" onclick = deleteOne(${targetIndex})><br>`);
+      }
+      console.log(response);
+    }
+  });
+
+  function deleteOne(targetIndex){
+    $.ajax({
+      url: `/deleteOne?targetIndex=${targetIndex}`,
+      data: {},
+      success: function(response) {
+        console.log(response);
+        alert("삭제 성공")
+        location.href = `/newList`
+      }
+    })
+  };
+
+
+  function editOne(targetIndex){
+    location.href = `/editPage?no=${targetIndex}`
+  };
+
+  $("#writeBtn").click(function() {
+    location.href = "/newsWriteForm"
+  });
+
+  $("#deleteBtn").click(function() {
+    location.href = "/newsDeleteForm"
+  });
+</script>
+
+</html>
